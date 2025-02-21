@@ -16,6 +16,8 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Ahnaf Rafid | Portfolio",
+  keywords:
+    "ahnaf, ahnaf rafid nandan, ahnaf rafid, portfolio website, website portfolio, website portfolio next js, next js, react, tailwind, javascript",
   description:
     "I am Ahnaf Rafid, a Web Developer focused on creating modern and responsive websites with the latest technologies.",
   icons: {
