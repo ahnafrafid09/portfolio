@@ -27,7 +27,6 @@ export const metadata: Metadata = {
     title: "Ahnaf Rafid | Portfolio",
     description:
       "I am Ahnaf Rafid, a Web Developer focused on creating modern and responsive websites with the latest technologies.",
-    images: ["/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
@@ -35,9 +34,7 @@ export const metadata: Metadata = {
     title: "Ahnaf Rafid | Portfolio",
     description:
       "I am Ahnaf Rafid, a Web Developer focused on creating modern and responsive websites with the latest technologies.",
-    images: ["/twitter-image.png"],
   },
-  themeColor: "#1c1c22",
 };
 
 export default function RootLayout({
