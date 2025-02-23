@@ -1,7 +1,11 @@
 "use server";
-import nodemailer from "nodemailer";
-import { ContactSchema } from "./../schema/index";
+import { Resend } from "resend";
+import { ContactSchema } from "../schema/index";
 import * as z from "zod";
+import EmailTemplate from "@/components/EmailTemplate";
+
+// Inisialisasi Resend API
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const sendEmail = async (values: z.infer<typeof ContactSchema>) => {
   const validateFields = ContactSchema.safeParse(values);
@@ -10,42 +14,27 @@ export const sendEmail = async (values: z.infer<typeof ContactSchema>) => {
   }
 
   const { firstname, lastname, email, service, message, phone } = values;
-  const fullName = `${firstname} ${lastname ? lastname : ""}`.trim();
-
-  // Konfigurasi Nodemailer
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.SMTP_SERVER_USERNAME,
-      pass: process.env.SMTP_SERVER_PASSWORD,
-    },
-  });
+  const fullname = `${firstname} ${lastname ? lastname : ""}`.trim();
 
   try {
-    await transporter.sendMail({
-      from: process.env.SMTP_SERVER_USERNAME,
-      to: process.env.ADMIN_EMAIL,
-      subject: `New Contact Form Submission from ${fullName}`,
-      text: `Name: ${fullName}\nEmail: ${email}\nService: ${service}\nMessage:\n${message}\nPhone:\n${phone}`,
+    await resend.emails.send({
+      from: "Ahnafrafid <onboarding@resend.dev>",
+      to: [`${process.env.ADMIN_EMAIL}`],
+      subject: `New Contact Form Submission from ${fullname}`,
+      text: `Name: ${fullname}\nEmail: ${email}\nService: ${service}\nMessage:\n${message}\nPhone:\n${phone}`,
     });
 
-    await transporter.sendMail({
-      from: process.env.SMTP_SERVER_USERNAME,
-      to: email,
+    await resend.emails.send({
+      from: "Ahnafrafid <onboarding@resend.dev>",
+      to: [email],
       subject: "Thank You for Contacting Us!",
-      text: `Hi ${fullName},  
-
-      Thank you for getting in touch! We truly appreciate your message and will respond as soon as possible.  
-      
-      ✨ Here’s a copy of your message:  
-      "${message}"  
-      
-      If you have any urgent inquiries, feel free to reach out again. We’re happy to assist you!  
-      
-      Looking forward to connecting with you.  
-      
-      Best regards,  
-      Ahnaf`,
+      react: EmailTemplate({
+        fullname,
+        email,
+        service,
+        message,
+        phone,
+      }),
     });
 
     return { success: true, message: "Email sent successfully!" };

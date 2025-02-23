@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { contact } from "@/lib/data";
+import { contact, services } from "@/lib/data";
 import { sendEmail } from "@/lib/send-email";
 import { toast } from "sonner";
 
@@ -143,16 +143,13 @@ const Contact = () => {
                   <SelectContent>
                     <SelectGroup>
                       <SelectLabel>Services</SelectLabel>
-                      <SelectItem value="frontend">
-                        Front End Web Development
-                      </SelectItem>
-                      <SelectItem value="backend">
-                        Back End Web Development
-                      </SelectItem>
-                      <SelectItem value="fullstack">
-                        Fullstack Web Development
-                      </SelectItem>
-                      <SelectItem value="ui/ux">UI/UX Design</SelectItem>
+                      {services.map((data, index) => {
+                        return (
+                          <SelectItem key={index} value={data.title}>
+                            {data.title}
+                          </SelectItem>
+                        );
+                      })}
                     </SelectGroup>
                   </SelectContent>
                 </Select>
