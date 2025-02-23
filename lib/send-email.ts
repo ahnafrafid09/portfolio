@@ -18,14 +18,14 @@ export const sendEmail = async (values: z.infer<typeof ContactSchema>) => {
 
   try {
     await resend.emails.send({
-      from: "Ahnafrafid <onboarding@resend.dev>",
+      from: "Ahnaf Rafid <noreply@ahnafrafid.my.id>",
       to: [`${process.env.ADMIN_EMAIL}`],
       subject: `New Contact Form Submission from ${fullname}`,
       text: `Name: ${fullname}\nEmail: ${email}\nService: ${service}\nMessage:\n${message}\nPhone:\n${phone}`,
     });
 
     await resend.emails.send({
-      from: "Ahnafrafid <onboarding@resend.dev>",
+      from: "Ahnaf Rafid <noreply@ahnafrafid.my.id>",
       to: [email],
       subject: "Thank You for Contacting Us!",
       react: EmailTemplate({
