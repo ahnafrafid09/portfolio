@@ -74,15 +74,17 @@ const Contact = () => {
       }}
       className="py-6"
     >
-      <div className="container mx-auto">
-        <div className="flex flex-col xl:flex-row gap-[30px]">
+      <div className="container mx-auto px-4 md:px-8 lg:px-12">
+        <div className="flex flex-col xl:flex-row gap-8">
           <div className="xl:h-[54%] order-2 xl:order-none">
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
+              className="flex flex-col gap-6 p-6 md:p-10 bg-[#27272c] rounded-xl"
             >
-              <h3 className="text-4xl text-accent">Lets Work With Us</h3>
-              <p className="text-white/60">
+              <h3 className="text-3xl md:text-4xl text-accent font-semibold">
+                Let's Work With Us
+              </h3>
+              <p className="text-white/60 text-sm md:text-base lg:text-lg">
                 If you need a programmer for your project, please fill out the
                 form below
               </p>
@@ -90,18 +92,26 @@ const Contact = () => {
               {/* Input Fields */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col">
-                  <Input {...register("firstname")} placeholder="Firstname" />
+                  <Input
+                    {...register("firstname")}
+                    placeholder="Firstname"
+                    className="text-sm md:text-base"
+                  />
                   {errors.firstname && (
-                    <p className="text-red-500 text-xs pl-1 mt-1">
+                    <p className="text-red-500 text-xs md:text-sm pl-1 mt-1">
                       {errors.firstname.message}
                     </p>
                   )}
                 </div>
 
                 <div className="flex flex-col">
-                  <Input {...register("lastname")} placeholder="Lastname" />
+                  <Input
+                    {...register("lastname")}
+                    placeholder="Lastname"
+                    className="text-sm md:text-base"
+                  />
                   {errors.lastname && (
-                    <p className="text-red-500 text-xs pl-1 mt-1">
+                    <p className="text-red-500 text-xs md:text-sm pl-1 mt-1">
                       {errors.lastname.message}
                     </p>
                   )}
@@ -112,9 +122,10 @@ const Contact = () => {
                     {...register("email")}
                     type="email"
                     placeholder="Email Address"
+                    className="text-sm md:text-base"
                   />
                   {errors.email && (
-                    <p className="text-red-500 text-xs pl-1 mt-1">
+                    <p className="text-red-500 text-xs md:text-sm pl-1 mt-1">
                       {errors.email.message}
                     </p>
                   )}
@@ -125,9 +136,10 @@ const Contact = () => {
                     {...register("phone")}
                     placeholder="Phone Number"
                     type="tel"
+                    className="text-sm md:text-base"
                   />
                   {errors.phone && (
-                    <p className="text-red-500 text-xs pl-1 mt-1">
+                    <p className="text-red-500 text-xs md:text-sm pl-1 mt-1">
                       {errors.phone.message}
                     </p>
                   )}
@@ -137,24 +149,28 @@ const Contact = () => {
               {/* Select Field */}
               <div className="flex flex-col gap-1">
                 <Select onValueChange={(value) => setValue("service", value)}>
-                  <SelectTrigger className="w-full">
+                  <SelectTrigger className="w-full text-sm md:text-base">
                     <SelectValue placeholder="Select a Service" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
-                      <SelectLabel>Services</SelectLabel>
-                      {services.map((data, index) => {
-                        return (
-                          <SelectItem key={index} value={data.title}>
-                            {data.title}
-                          </SelectItem>
-                        );
-                      })}
+                      <SelectLabel className="text-sm md:text-base">
+                        Services
+                      </SelectLabel>
+                      {services.map((data, index) => (
+                        <SelectItem
+                          key={index}
+                          value={data.title}
+                          className="text-sm md:text-base"
+                        >
+                          {data.title}
+                        </SelectItem>
+                      ))}
                     </SelectGroup>
                   </SelectContent>
                 </Select>
                 {errors.service && (
-                  <p className="text-red-500 text-sm">
+                  <p className="text-red-500 text-xs md:text-sm">
                     {errors.service.message}
                   </p>
                 )}
@@ -164,18 +180,22 @@ const Contact = () => {
               <div className="flex flex-col gap-1">
                 <Textarea
                   {...register("message")}
-                  className="h-[200px]"
+                  className="h-[200px] text-sm md:text-base"
                   placeholder="Type your message here"
                 />
                 {errors.message && (
-                  <p className="text-red-500 text-sm">
+                  <p className="text-red-500 text-xs md:text-sm">
                     {errors.message.message}
                   </p>
                 )}
               </div>
 
               {/* Button */}
-              <Button type="submit" size="md" className="max-w-40">
+              <Button
+                type="submit"
+                size="md"
+                className="max-w-40 text-sm md:text-base"
+              >
                 {isPending ? "Sending..." : "Send Message"}
               </Button>
             </form>
@@ -187,11 +207,15 @@ const Contact = () => {
               {contact.map((data, index) => (
                 <li key={index} className="flex items-center gap-6">
                   <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-[#27272c] text-accent rounded-md flex items-center justify-center">
-                    <div className="text-[28px]">{data.icon}</div>
+                    <div className="text-[24px] md:text-[28px]">
+                      {data.icon}
+                    </div>
                   </div>
                   <div className="flex-1">
-                    <p className="text-white/60">{data.title}</p>
-                    <h3 className="text-xl">{data.description}</h3>
+                    <p className="text-white/60 text-sm md:text-base">
+                      {data.title}
+                    </p>
+                    <h3 className="text-lg md:text-xl">{data.description}</h3>
                   </div>
                 </li>
               ))}

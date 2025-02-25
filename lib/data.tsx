@@ -136,11 +136,6 @@ export const education = {
       degree: "Information System",
       duration: "2020 - 2024",
     },
-    {
-      instution: "Widyatama University",
-      degree: "Information System",
-      duration: "2020 - 2024",
-    },
   ],
 };
 

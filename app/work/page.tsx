@@ -47,9 +47,12 @@ const Work = () => {
                 {project.num}
               </div>
               {/* project category */}
-              <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                {project.category}
-              </h2>
+              <div className="flex flex-col gap-1 ">
+                <h2 className="text-4xl font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
+                  {project.title}
+                </h2>
+                <p className="text-white/60">{project.category}</p>
+              </div>
               {/* project description */}
               <p className="text-white/60">{project.description}</p>
               {/* project feature */}
