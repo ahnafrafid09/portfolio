@@ -82,7 +82,7 @@ const Contact = () => {
               className="flex flex-col gap-6 p-6 md:p-10 bg-[#27272c] rounded-xl"
             >
               <h3 className="text-3xl md:text-4xl text-accent font-semibold">
-                Let's Work With Us
+                Lets Work With Us
               </h3>
               <p className="text-white/60 text-sm md:text-base lg:text-lg">
                 If you need a programmer for your project, please fill out the
