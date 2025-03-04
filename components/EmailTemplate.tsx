@@ -32,7 +32,7 @@ export default function EmailTemplate({
       <Tailwind>
         <Head />
         <Preview>Thank You For Your Message, {fullname}!</Preview>
-        <Body className="bg-[#fff] mt-auto mx-auto font-primary px-4 sm:px-6 text-[#fff] p-4">
+        <Body className="bg-[#fff] mt-auto mx-auto  px-4 sm:px-6 text-[#fff] p-4">
           <Container className="border bg-[#1c1c22] border-[#00ff99] border-solid rounded my-10 mx-auto p-6 max-w-lg shadow-lg">
             {/* Logo / Branding */}
             <Section className="text-left">
