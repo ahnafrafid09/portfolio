@@ -1,20 +1,18 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { FiDownload } from "react-icons/fi";
-import { saveAs } from "file-saver";
+import { FiEye } from "react-icons/fi";
+
+import React, { useState } from "react";
 
 // Component
 import Photo from "@/components/Photo";
 import Social from "@/components/Social";
 import Stats from "@/components/Stats";
+import ModalResume from "@/components/ModalResume";
 
 const Home = () => {
-  const saveFile = () => {
-    saveAs(
-      "/assets/resume/Ahnaf Rafid N - Curriculum Vitae.pdf",
-      "Ahnaf Rafid N - Curriculum Vitae.pdf"
-    );
-  };
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <section className="h-full">
       <div className="container mx-auto h-full">
@@ -36,11 +34,11 @@ const Home = () => {
               <Button
                 variant="outline"
                 size="lg"
-                onClick={saveFile}
-                className="uppercase flex items-center gap-2"
+                onClick={() => setIsOpen(true)}
+                className="uppercase flex items-center gap-2 cursor-pointer"
               >
-                <span>Download CV</span>
-                <FiDownload className="text-xl" />
+                <span>My Resume</span>
+                <FiEye className="text-xl" />
               </Button>
               <div className="mb-8 xl:mb-0">
                 <Social
@@ -57,6 +55,7 @@ const Home = () => {
         </div>
       </div>
       <Stats />
+      <ModalResume isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </section>
   );
 };
