@@ -19,6 +19,8 @@ import {
   SiSupabase,
   SiOpenai,
   SiAxios,
+  SiLaravel,
+  SiLaragon,
 } from "react-icons/si";
 
 // Service Data
@@ -85,7 +87,7 @@ export const about = {
     },
     {
       fieldName: "Work",
-      fieldValue: "Open to Work",
+      fieldValue: "PT Data Kreatif",
     },
     {
       fieldName: "Languages",
@@ -115,6 +117,11 @@ export const experiences = {
       company: "Anjangsana Trip Planner",
       position: "Freelance Web Developer",
       duration: "Aug 2024 - Sept 2024",
+    },
+    {
+      company: "PT Data Kreatif",
+      position: "Full Stack Web Developer",
+      duration: "Aug 2025 - Present",
     },
   ],
 };
@@ -197,6 +204,14 @@ export const skills = {
       icon: <SiVercel />,
       name: "Vercel",
     },
+    {
+      icon: <SiLaravel />,
+      name: "Laravel",
+    },
+    {
+      icon: <SiLaragon />,
+      name: "Laragon",
+    },
   ],
 };
 
@@ -229,7 +244,7 @@ export const work = [
       },
     ],
     image: "/assets/work/anjangsanatrip.png",
-    live: "https://anjangsanatripcom",
+    live: "https://anjangsanatrip.com",
     github: "",
   },
   {
@@ -259,7 +274,7 @@ export const work = [
       },
     ],
     image: "/assets/work/lokerin.png",
-    live: "https://lokerin-ahnafnetlifyapp/",
+    live: "https://lokerin-ahnaf.netlify.app/",
     github: "https://gitlabcom/ahnafrafid22/Ahnaf-Sanbercode-ReactJs-Batch-51",
   },
   {
@@ -285,7 +300,7 @@ export const work = [
       },
     ],
     image: "/assets/work/nawala.png",
-    live: "https://nawalatech",
+    live: "https://nawala.tech",
     github: "",
   },
 ];
