@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import PageTransition from "@/components/PageTransition";
 import StairTransition from "@/components/StairTransition";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/next";
 
 const jetbrainsMono = JetBrains_Mono({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
@@ -52,6 +53,7 @@ export default function RootLayout({
         <StairTransition />
         <PageTransition>{children}</PageTransition>
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );
